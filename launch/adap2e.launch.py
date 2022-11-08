@@ -20,6 +20,7 @@ def launch_setup(context, *args, **kwargs):
     devices_description = [
         get_package_share_directory("tirrex_adap2e") + "/config/ublox.gps.yaml",
         get_package_share_directory("tirrex_adap2e") + "/config/xsens.imu.yaml",
+        get_package_share_directory("tirrex_adap2e") + "/config/sick.lidar.yaml",
     ]
 
     robot = IncludeLaunchDescription(
