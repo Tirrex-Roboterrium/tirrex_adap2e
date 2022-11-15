@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(tirrex_adap2e)
+project(tirrex_robufast)
 
 # Default to C++14
 if(NOT CMAKE_CXX_STANDARD)
