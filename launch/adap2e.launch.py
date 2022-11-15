@@ -19,9 +19,9 @@ def launch_setup(context, *args, **kwargs):
     launch_gazebo = LaunchConfiguration("launch_gazebo").perform(context)
 
     devices_description = [
-        get_package_share_directory("tirrex_robufast") + "/config/proflex.gps.yaml",
-        get_package_share_directory("tirrex_robufast") + "/config/xsens.imu.yaml",
-        get_package_share_directory("tirrex_robufast") + "/config/sick.lidar.yaml",
+        get_package_share_directory("adap2e_robufast") + "/config/ublox.gps.yaml",
+        get_package_share_directory("adap2e_robufast") + "/config/xsens.imu.yaml",
+        get_package_share_directory("adap2e_robufast") + "/config/sick.lidar.yaml",
     ]
 
     robot = IncludeLaunchDescription(
@@ -32,7 +32,7 @@ def launch_setup(context, *args, **kwargs):
         launch_arguments={
             "mode": mode,
             "robot_namespace": robot_namespace,
-            "robot_type": "robucar",
+            "robot_type": "adap2e",
             "joystick_type": joystick_type,
             "launch_gazebo": launch_gazebo,
             "devices_description": str(devices_description),
