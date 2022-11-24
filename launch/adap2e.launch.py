@@ -14,28 +14,20 @@ from ament_index_python.packages import get_package_share_directory
 def launch_setup(context, *args, **kwargs):
 
     mode = LaunchConfiguration("mode").perform(context)
-    robot_namespace = LaunchConfiguration("robot_namespace").perform(context)
-    joystick_type = LaunchConfiguration("joystick_type").perform(context)
-    launch_gazebo = LaunchConfiguration("launch_gazebo").perform(context)
+    record = LaunchConfiguration("record").perform(context)
 
-    devices_description = [
-        get_package_share_directory("adap2e_robufast") + "/config/ublox.gps.yaml",
-        get_package_share_directory("adap2e_robufast") + "/config/xsens.imu.yaml",
-        get_package_share_directory("adap2e_robufast") + "/config/sick.lidar.yaml",
-    ]
+    configuration_directory = LaunchConfiguration("configuration_directory").perform(
+        context
+    )
 
     robot = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
-            get_package_share_directory("romea_mobile_base_bringup")
-            + "/launch/mobile_base.launch.py"
+            get_package_share_directory("tirrex_demo") + "/launch/demo.launch.py"
         ),
         launch_arguments={
             "mode": mode,
-            "robot_namespace": robot_namespace,
-            "robot_type": "adap2e",
-            "joystick_type": joystick_type,
-            "launch_gazebo": launch_gazebo,
-            "devices_description": str(devices_description),
+            "configuration_directory": configuration_directory,
+            "record" : record,
         }.items(),
     )
 
@@ -49,16 +41,13 @@ def generate_launch_description():
     declared_arguments.append(DeclareLaunchArgument("mode", default_value="simulation"))
 
     declared_arguments.append(
-        DeclareLaunchArgument("robot_namespace", default_value="robufast")
+        DeclareLaunchArgument(
+            "configuration_directory",
+            default_value=get_package_share_directory("tirrex_adap2e") + "/config",
+        )
     )
 
-    declared_arguments.append(
-        DeclareLaunchArgument("joystick_type", default_value="xbox")
-    )
-
-    declared_arguments.append(
-        DeclareLaunchArgument("launch_gazebo", default_value="True")
-    )
+    declared_arguments.append(DeclareLaunchArgument("record", default_value="false"))
 
     return LaunchDescription(
         declared_arguments + [OpaqueFunction(function=launch_setup)]

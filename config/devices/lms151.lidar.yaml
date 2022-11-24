@@ -12,3 +12,6 @@ geometry:
   parent_link: "base_link"
   xyz: [2.02 0.0 0.34]
   rpy: [0.0 0.0 0.0]
+records:
+  scan: true
+  cloud: false  

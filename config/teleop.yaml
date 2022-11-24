@@ -1,0 +1,6 @@
+joystick_type: xbox
+maximal_linear_speed:
+  slow_mode: 1
+  turbo_mode : 2
+#maximal_front_steering_angle:
+#maximal_rear_steering_angle:     

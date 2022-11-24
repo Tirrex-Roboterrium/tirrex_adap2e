@@ -1,0 +1,12 @@
+remote_controller:
+  type: joystick
+  available: true
+lms151:
+  type: lidar
+  available: true  
+ublox:
+  type: gps
+  available: true  
+xsens:
+  type: imu
+  available: true  
