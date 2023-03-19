@@ -1,6 +1,9 @@
-joystick_type: xbox
-maximal_linear_speed:
-  slow_mode: 1
-  turbo_mode : 2
-#maximal_front_steering_angle:
-#maximal_rear_steering_angle:     
+cmd_output:
+  message_type: romea_mobile_base_msgs/TwoAxleSteeringCommand
+  message_priority: 100
+cmd_range:
+  maximal_linear_speed:
+    slow_mode: 1.0
+    turbo_mode: 2.0
+  #maximal_front_steering_angle:
+  #maximal_rear_steering_angle:

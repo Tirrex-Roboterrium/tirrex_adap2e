@@ -4,10 +4,10 @@ configuration:
   model: fat
 #controller  ???
 records:
-  joint_states : true
-  controller/odom : true
-  controller/odometry : true
-  controller/kinematic : true
+  joint_states: true
+  controller/odom: true
+  controller/odometry: true
+  controller/kinematic: true
 simulation:
   initial_xyz: [0.0, 0.0, 0.0]
-  initial_rpy: [0.0, 0.0, 0.0]  
+  initial_rpy: [0.0, 0.0, 0.0]
