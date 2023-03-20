@@ -30,6 +30,7 @@ def launch_setup(context, *args, **kwargs):
     mode = LaunchConfiguration("mode").perform(context)
     record = LaunchConfiguration("record").perform(context)
     demo_config_directory = LaunchConfiguration("demo_config_directory").perform(context)
+
     debug_directory = get_debug_directory(demo, demo_timestamp, record)
     log_directory = get_log_directory(demo, demo_timestamp, record)
 
@@ -51,6 +52,7 @@ def launch_setup(context, *args, **kwargs):
             launch_arguments={
                 "demo": demo,
                 "demo_timestamp": demo_timestamp,
+                "demo_config_directory": demo_config_directory,
                 "mode": mode,
                 "record": record,
                 "robot_namespace": robot_namespace,
@@ -81,7 +83,7 @@ def generate_launch_description():
     declared_arguments.append(
         DeclareLaunchArgument(
             "demo_config_directory",
-            default_value=get_package_share_directory("tirrex_alpo") + "/config",
+            default_value=get_package_share_directory("tirrex_adap2e") + "/config",
         )
     )
 
