@@ -2,7 +2,16 @@ name: "adap2e"
 configuration:
   type: adap2e
   model: fat
-#controller  ???
+control:
+  controller_manager:
+    update_rate: 100
+    configuration:
+      pkg: adap2e_bringup
+      file: config/controller_manager.yaml
+  controller:
+    configuration:
+      pkg: adap2e_bringup
+      file: config/mobile_base_controller.yaml
 records:
   joint_states: true
   controller/odom: true
