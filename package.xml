@@ -3,11 +3,11 @@
 <package format="3">
   <name>tirrex_adap2e</name>
   <version>0.0.0</version>
-  <description>Package with adap2e launch files.</description>
+  <description>Package containing adap2e demo.</description>
 
   <maintainer email="jean.laneurit@inrae.fr">Jean Laneurit</maintainer>
 
-  <license>TODO</license>
+  <license>Apache License 2.0</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
