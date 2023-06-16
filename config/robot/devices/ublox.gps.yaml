@@ -22,3 +22,5 @@ records:
   nmea_sentence: true
   gps_fix: false
   vel: false
+localisation_plugin:
+  pkg: romea_localisation_imu
