@@ -15,6 +15,7 @@ configuration:
   type: drotek
   model: f9p
   rate: 10
+  dual_antenna: true
 geometry:
   parent_link: "base_link"
   xyz: [0.0, 0.0, 1.5]
@@ -22,5 +23,3 @@ records:
   nmea_sentence: true
   gps_fix: false
   vel: false
-localisation_plugin:
-  pkg: romea_localisation_imu
