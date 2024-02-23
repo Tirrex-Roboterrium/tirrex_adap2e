@@ -4,7 +4,10 @@ remote_controller:
 lms151:
   type: lidar
   available_mode: none
-ublox:
+# drotek:
+#   type: gps
+#   available_mode: all
+septentrio:
   type: gps
   available_mode: all
 xsens:
