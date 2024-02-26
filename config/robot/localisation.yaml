@@ -25,7 +25,7 @@ plugins:
   gps:
     pkg: romea_localisation_gps_plugin
     launch: gps_plugin.launch.py
-    input_sensor_meta_description_filename: ublox
+    input_sensor_meta_description_filename: septentrio
     # configuration:
     #   restamping: false
     #   minimal_fix_quality: 4
