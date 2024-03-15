@@ -3,7 +3,7 @@ remote_controller:
   available_mode: all
 lms151:
   type: lidar
-  available_mode: all
+  available_mode: none
 ublox:
   type: gps
   available_mode: all
@@ -12,4 +12,13 @@ xsens:
   available_mode: all
 ur10:
   type: arm
-  available_mode: simulation
+  available_mode: none
+axis:
+  type: camera
+  available_mode: none
+zed1:
+  type: stereo_camera
+  available_mode: none
+realsense:
+  type: rgbd_camera
+  available_mode: none
