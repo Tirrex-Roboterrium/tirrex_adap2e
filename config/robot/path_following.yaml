@@ -13,8 +13,8 @@ lateral_control:
       rear_kd: 0.5
   predictive:
     gains:
-      front_kd: 0.4
-      rear_kd: 0.7
+      front_kd: 0.7
+      rear_kd: 0.4
     prediction:
       horizon: 10
       a0: 0.1642
