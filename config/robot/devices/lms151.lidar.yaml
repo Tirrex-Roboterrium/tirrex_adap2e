@@ -1,16 +1,19 @@
 name: "lidar"
-driver:
-  package: "sick_scan"
-  executable: "sick_generic_caller"
-  parameters:
-    hostname: "192.168.1.112"
-    port: 2112
+launch:
+  - include:
+      file: "$(find-pkg-share romea_lidar_meta_bringup)/profile/sick_scan_xd_lms1xx.launch.py"
+      arg:
+        - name: ip
+          value: "192.168.1.112"
+        - name: port
+          value: "2112"
 configuration:
-  type: sick
-  model: lms151
+  manufacturer: sick
+  model: lms
+  version: 151
   rate: 50
   resolution: 0.5
-geometry:
+location:
   parent_link: "base_link"
   xyz: [2.02, 0.0, 0.34]
   rpy: [0.0, 0.0, 0.0]

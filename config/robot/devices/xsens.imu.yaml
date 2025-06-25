@@ -1,17 +1,22 @@
 name: "imu"
-driver:
-  package: "xsens_driver"
-  executable: mtnode.py
-  #  package: "bluespace_ai_xsens_mti_driver"
-  #  executable xsens_mti_node
-  parameters:
-    device: "/dev/ttyUSB0"
-    baudrate: 115200
+launch:
+  - include:
+      file: "$(find-pkg-share romea_imu_meta_bringup)/profile/xsens_driver.launch.py"
+      arg:
+        - name: device
+          value: /dev/ttyUSB0
+        - name: baudrate
+          value: "115200"
+  - include:
+      file: "$(find-pkg-share romea_imu_meta_bringup)/profile/localisation_plugin.launch.py"
+      arg:
+        - name: odom_topic
+          value: /$(var robot_namespace)/base/controller/odom
 configuration:
-  type: xsens
+  manufacturer: xsens
   model: mti
   rate: 100
-geometry:
+location:
   parent_link: "base_link"
   xyz: [0.0, 0.0, 0.7]
   rpy: [0.0, 0.0, 0.0]

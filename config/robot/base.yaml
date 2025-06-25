@@ -1,17 +1,18 @@
 name: "base"
+launch:
+  - include:
+      file: "$(find-pkg-share romea_mobile_base_meta_bringup)/profile/adap2e.launch.py"
+      arg:
+        - name: "joystick_topic"
+          value: "/adap2e/joystick/joy"
+        - name: "joystick_configuration_file_path"
+          value: "$(find-pkg-share romea_joystick_utils)/config/microsoft_xbox.yaml"
+  - include:
+      file: "$(find-pkg-share romea_mobile_base_meta_bringup)/profile/localisation_plugin.launch.py"
 configuration:
-  type: adap2e
-  model: fat
-# control:  not yet implemented
-#   controller_manager:
-#     update_rate: 100
-#     configuration:
-#       pkg: adap2e_bringup
-#       file: config/controller_manager.yaml
-#   controller:
-#     configuration:
-#       pkg: adap2e_bringup
-#       file: config/mobile_base_controller.yaml
+  manufacturer: inrae
+  model: adap2e
+  version: fat
 records:
   joint_states: true
   controller/odom: true
