@@ -6,13 +6,13 @@ lms151:
   available_mode: none
 septentrio:
   type: gps
-  available_mode: none
+  available_mode: all
 xsens:
   type: imu
-  available_mode: none
+  available_mode: all
 ur10:
   type: arm
-  available_mode: simulation
+  available_mode: none
 axis:
   type: camera
   available_mode: none
