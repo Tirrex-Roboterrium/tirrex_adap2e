@@ -13,7 +13,7 @@
 
   <depend>launch</depend>
   <depend>ament_index_python</depend>
-  <depend>tirrex_demo</depend>
+  <depend>tirrex_core</depend>
 
   <export>
     <build_type>ament_cmake</build_type>

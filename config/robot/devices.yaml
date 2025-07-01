@@ -3,7 +3,7 @@ remote_controller:
   available_mode: all
 lms151:
   type: lidar
-  available_mode: none
+  available_mode: all
 septentrio:
   type: gps
   available_mode: all
@@ -21,4 +21,4 @@ zed1:
   available_mode: none
 realsense:
   type: camera
-  available_mode: none
+  available_mode: simulation

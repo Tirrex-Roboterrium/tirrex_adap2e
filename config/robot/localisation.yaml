@@ -6,6 +6,8 @@ predictor:
   maximal_dead_recknoning_elapsed_time: 10.
 angular_speed_updater:
   minimal_rate: 10
+twist_updater:
+  minimal_rate: 0
 linear_speeds_updater:
   minimal_rate: 10
 position_updater:

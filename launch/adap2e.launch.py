@@ -16,22 +16,16 @@ from launch import LaunchDescription
 
 from launch.actions import (
     IncludeLaunchDescription,
-    DeclareLaunchArgument,
     OpaqueFunction,
     GroupAction,
     SetEnvironmentVariable
 )
 
-from launch.substitutions import LaunchConfiguration
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from ament_index_python.packages import get_package_share_directory
 
-from tirrex_demo import (
-    get_log_directory,
-    get_debug_directory,
-    get_demo_timestamp,
-    save_replay_configuration,
-)
+from tirrex_core import config
+from tirrex_core import launch
 
 
 def launch_setup(context, *args, **kwargs):
@@ -39,16 +33,16 @@ def launch_setup(context, *args, **kwargs):
     robot_namespace = "adap2e"
 
     demo = "tirrex_adap2e"
-    demo_timestamp = get_demo_timestamp()
+    demo_timestamp = config.get_demo_timestamp()
 
-    mode = LaunchConfiguration("mode").perform(context)
-    record = LaunchConfiguration("record").perform(context)
-    demo_config_directory = LaunchConfiguration("demo_config_directory").perform(context)
+    mode = launch.get_mode(context)
+    record = launch.get_record(context)
+    demo_configuration_directory = launch.get_demo_configuration_directory(context)
 
-    debug_directory = get_debug_directory(demo, demo_timestamp, record)
-    log_directory = get_log_directory(demo, demo_timestamp, record)
+    debug_directory = config.get_debug_directory(demo, demo_timestamp, record)
+    log_directory = config.get_log_directory(demo, demo_timestamp, record)
 
-    print(" demo_config_directory ", demo_config_directory)
+    print(" demo_config_directory ", demo_configuration_directory)
     print(" debug_directory ", debug_directory)
     print(" log_directory ", log_directory)
 
@@ -60,13 +54,13 @@ def launch_setup(context, *args, **kwargs):
     actions.append(
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(
-                get_package_share_directory("tirrex_demo")
+                get_package_share_directory("tirrex_core")
                 + "/launch/demo.launch.py"
             ),
             launch_arguments={
                 "demo": demo,
-                "demo_timestamp": demo_timestamp,
-                "demo_config_directory": demo_config_directory,
+                "demo_start_timestamp": demo_timestamp,
+                "demo_configuration_directory": demo_configuration_directory,
                 "mode": mode,
                 "record": record,
                 "robot_namespace": robot_namespace,
@@ -74,33 +68,27 @@ def launch_setup(context, *args, **kwargs):
         )
     )
 
-    if record == "true":
+    # if record == "true":
 
-        save_replay_configuration(
-            demo,
-            demo_timestamp,
-            "adap2e.launch.py",
-            {"mode": "replay_"+mode},
-        )
+    #     save_replay_configuration(
+    #         demo,
+    #         demo_timestamp,
+    #         "adap2e.launch.py",
+    #         {"mode": "replay_"+mode},
+    #     )
 
     return [GroupAction(actions)]
 
 
 def generate_launch_description():
 
-    declared_arguments = []
-
-    declared_arguments.append(DeclareLaunchArgument("mode", default_value="simulation"))
-
-    declared_arguments.append(DeclareLaunchArgument("record", default_value="false"))
-
-    declared_arguments.append(
-        DeclareLaunchArgument(
-            "demo_config_directory",
-            default_value=get_package_share_directory("tirrex_adap2e") + "/config",
-        )
-    )
-
     return LaunchDescription(
-        declared_arguments + [OpaqueFunction(function=launch_setup)]
+       [
+            launch.declare_mode('simulation'),
+            launch.declare_record('false'),
+            launch.declare_demo_configuration_directory(
+                f'{get_package_share_directory("tirrex_adap2e")}/config'
+            ),
+            OpaqueFunction(function=launch_setup)
+       ]
     )
