@@ -1,7 +1,7 @@
 name: "base"
 launch:
   - include:
-      file: "$(find-pkg-share romea_mobile_base_meta_bringup)/profile/adap2e.launch.py"
+      file: "$(find-pkg-share romea_mobile_base_meta_bringup)/profile/robot.launch.py"
       arg:
         - name: "joystick_topic"
           value: "/adap2e/joystick/joy"
