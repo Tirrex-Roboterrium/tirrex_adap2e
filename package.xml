@@ -5,7 +5,8 @@
   <version>0.0.0</version>
   <description>Package containing adap2e demo.</description>
 
-  <maintainer email="jean.laneurit@inrae.fr">Jean Laneurit</maintainer>
+  <author email="jean.laneurit@inrae.fr">Jean Laneurit</author>
+  <maintainer email="tscf-dev@inrae.fr">TSCF dev</maintainer>
 
   <license>Apache License 2.0</license>
 
